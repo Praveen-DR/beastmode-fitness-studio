@@ -24,7 +24,7 @@ public class MembershipServiceImpl implements MembershipService{
     }
 
     @Override
-    public String createMembership(String membershipName, Double price, String durationInMonths, boolean isActive) {
+    public String createMembership(String membershipName, double price, Integer durationInMonths, boolean isActive) {
         List<Membership> activeMembership = membershipRepository.findAllByMembershipIdAndIsActive(uuidUtil.generateUuid(), isActive);
         for (Membership data: activeMembership){
             data.setActive(isActive);
@@ -36,13 +36,14 @@ public class MembershipServiceImpl implements MembershipService{
     }
 
     @Override
-    public String updateMembership(String membershipId, String membershipName, Double price, String durationInMonths, boolean isActive) {
-        Membership membership = membershipRepository.findById(membershipId).orElseThrow(()->new ApiRequestException("Membership not found"));
+    public String updateMembership(String membershipId, String membershipName, double price, Integer durationInMonths, boolean isActive) {
+        Membership membership = membershipRepository.findById(membershipId).orElseThrow(()->new ApiRequestException("Membership ID not found"));
         membership.setMembershipId(membershipId);
         membership.setMembershipName(membershipName);
         membership.setPrice(price);
         membership.setDurationInMonths(durationInMonths);
         membership.setActive(isActive);
+        membershipRepository.save(membership);
         return "Membership updated";
     }
 
@@ -55,7 +56,15 @@ public class MembershipServiceImpl implements MembershipService{
         return "Membership deleted successfully";
     }
 
+    @Override
+    public List<Membership> getAllMembership() {
+        return membershipRepository.findAll();
+    }
 
+    @Override
+    public Membership getMembershipById(String membershipId) {
+        return membershipRepository.findById(membershipId).orElseThrow(()-> new ApiRequestException("Membership ID does not exists"));
+    }
 
 
 }

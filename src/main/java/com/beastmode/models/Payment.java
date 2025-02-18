@@ -1,10 +1,13 @@
 package com.beastmode.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -18,13 +21,29 @@ public class Payment {
     private String paymentId; // Primary Key
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "membership_id", nullable = false)
+    private Membership membership;
 
     @Column(nullable = false)
     private Double amount;
 
     @Column(nullable = false)
-    private String paymentDate;
+    private LocalDateTime paymentDate = LocalDateTime.now();
+
+    @Column(nullable = false)
+    private PaymentStatus paymentStatus;
+
+    @Column(nullable = false)
+    private PaymentMethod paymentMethod;
+
+    @Column(unique = true)
+    private String transactionId;
 
 }
+

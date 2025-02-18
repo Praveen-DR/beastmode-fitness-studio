@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MembershipMapper {
-    public Membership toMembership(String membershipId, String membershipName, double price, String durationInMonths, boolean isActive) {
+    public Membership toMembership(String membershipId, String membershipName, double price, Integer durationInMonths, boolean isActive) {
         return Membership.builder()
                 .membershipId(membershipId)
                 .membershipName(membershipName)

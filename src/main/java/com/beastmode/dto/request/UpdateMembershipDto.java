@@ -1,4 +1,4 @@
 package com.beastmode.dto.request;
 
-public record UpdateMembershipDto(String membershipId, String membershipName, Double price, String durationInMonths, boolean isActive) {
+public record UpdateMembershipDto(String membershipId, String membershipName, double price, Integer durationInMonths, boolean isActive) {
 }

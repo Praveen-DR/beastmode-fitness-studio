@@ -1,5 +1,7 @@
 package com.beastmode.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,12 +27,20 @@ public class Membership {
     private Double price;
 
     @Column(nullable = false)
-    private String durationInMonths;
+    private Integer durationInMonths;
 
     @Column(nullable = false)
     private boolean isActive;
 
-    @ManyToMany(mappedBy = "membership")
-    private List<User> users;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "membership", cascade = CascadeType.ALL)
+    private List<Payment> payments;
+
+
 
 }

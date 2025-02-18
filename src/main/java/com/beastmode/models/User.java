@@ -1,6 +1,8 @@
 package com.beastmode.models;
 
 import com.beastmode.Role;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,12 +34,17 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
-    @ManyToMany
-    @JoinColumn(name = "membership_id")
-    private List<Membership> membership;
-
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "trainer_id")
     private Trainer trainer;
+
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Payment> payments;
+
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Membership> memberships;
 
 }
