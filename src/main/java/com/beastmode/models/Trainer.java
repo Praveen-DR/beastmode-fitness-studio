@@ -49,4 +49,8 @@ public class Trainer {
     @OneToMany(mappedBy = "trainer")
     @JsonManagedReference
     private List<User> users;
+
+    @OneToMany(mappedBy = "trainer")
+    @JsonManagedReference
+    private List<Feedback> feedbacks;
 }

@@ -2,6 +2,7 @@ package com.beastmode.services.attendance_service;
 
 import com.beastmode.models.Attendance;
 import com.beastmode.models.AttendanceType;
+import com.beastmode.models.Feedback;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

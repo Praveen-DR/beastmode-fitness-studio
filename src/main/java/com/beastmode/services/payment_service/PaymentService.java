@@ -20,9 +20,4 @@ public interface PaymentService {
 
     String deletePayment(String paymentId);
 
-
-
-
-
-
 }

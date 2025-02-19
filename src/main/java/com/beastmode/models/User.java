@@ -47,4 +47,8 @@ public class User {
     @JsonManagedReference
     private List<Membership> memberships;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.DETACH)
+    @JsonManagedReference
+    private List<Feedback> feedbacks;
+
 }
