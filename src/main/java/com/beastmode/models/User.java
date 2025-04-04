@@ -1,6 +1,6 @@
 package com.beastmode.models;
 
-import com.beastmode.Role;
+import com.beastmode.models.Role;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;

@@ -21,13 +21,13 @@ public class TrainerController {
 
     @PostMapping("/v1/createTrainer")
     ResponseEntity<String> createTrainer(@RequestBody CreateTrainerDto data){
-        String message = trainerService.createTrainer(data.firstName(), data.lastName(), data.email(), data.phoneNumber(), data.specialization(), data.experience(), data.isActive());
+        String message = trainerService.createTrainer(data.firstName(), data.lastName(), data.email(), data.phoneNumber(), data.specialization(), data.experience(), data.isActive(), data.password());
         return ResponseEntity.status(201).body(message);
     }
 
     @PostMapping("/v1/updateTrainer")
     ResponseEntity<String> updateTrainer(@RequestBody UpdateTrainerDto data){
-        String message = trainerService.updateTrainer(data.trainerId(), data.firstName(), data.lastName(), data.email(), data.phoneNumber(), data.specialization(), data.experience(), data.isActive());
+        String message = trainerService.updateTrainer(data.trainerId(), data.firstName(), data.lastName(), data.email(), data.phoneNumber(), data.specialization(), data.experience(), data.isActive(), data.password());
         return ResponseEntity.status(201).body(message);
     }
 

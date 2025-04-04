@@ -1,6 +1,6 @@
 package com.beastmode.repositories;
 
-import com.beastmode.Role;
+import com.beastmode.models.Role;
 import com.beastmode.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -13,5 +13,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     boolean existsByEmail(String email);
 
     List<User> findAllByRole(Role role);
+
+    Optional<User> findByEmail(String email);
 
 }

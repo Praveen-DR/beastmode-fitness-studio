@@ -23,17 +23,17 @@ public class TrainerServiceImpl implements TrainerService{
 
 
     @Override
-    public String createTrainer(String firstName, String lastName, String email, String phoneNumber, String specialization, int experience, boolean isActive) {
+    public String createTrainer(String firstName, String lastName, String email, String phoneNumber, String specialization, int experience, boolean isActive, String password) {
         if (trainerRepository.existsByPhoneNumber(phoneNumber)) {
             throw new ApiRequestException("Phone number Already exits");
         }
-        Trainer trainer = trainerMapper.toTrainer(uuidUtil.generateUuid(), firstName, lastName, email, phoneNumber, specialization, experience, isActive);
+        Trainer trainer = trainerMapper.toTrainer(uuidUtil.generateUuid(), firstName, lastName, email, phoneNumber, specialization, experience, isActive, password);
         trainerRepository.save(trainer);
         return "Trainer created Successfully";
     }
 
     @Override
-    public String updateTrainer(String trainerId, String firstName, String lastName, String email, String phoneNumber, String specialization, int experience, boolean isActive) {
+    public String updateTrainer(String trainerId, String firstName, String lastName, String email, String phoneNumber, String specialization, int experience, boolean isActive, String password) {
         Trainer trainer = trainerRepository.findById(trainerId).orElseThrow(()->new ApiRequestException("Trainer ID Not found"));
         trainer.setFirstName(firstName);
         trainer.setLastName(lastName);
@@ -41,6 +41,7 @@ public class TrainerServiceImpl implements TrainerService{
         trainer.setPhoneNumber(phoneNumber);
         trainer.setSpecialization(specialization);
         trainer.setExperience(experience);
+        trainer.setPassword(password);
         trainerRepository.save(trainer);
         return "Trainer Updated Successfully";
     }

@@ -1,6 +1,6 @@
 package com.beastmode.services.user_service;
 
-import com.beastmode.Role;
+import com.beastmode.models.Role;
 import com.beastmode.exceptions.ApiRequestException;
 import com.beastmode.mappers.UserMapper;
 import com.beastmode.models.User;
@@ -38,6 +38,16 @@ public class UserServiceImpl implements UserService{
         }catch (HttpMessageNotReadableException e) {
             throw new ApiRequestException("Accepted values: [MEMBER, TRAINER, ADMIN] No other values are permitted.");
         }
+    }
+
+    @Override
+    public User login(String email, String password) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new ApiRequestException("User not found"));
+        if(!user.getPassword().equals(password)){
+            throw new ApiRequestException("Credentials do not match");
+        }
+
+        return user;
     }
 
     @Override

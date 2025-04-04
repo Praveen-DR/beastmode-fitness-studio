@@ -40,6 +40,9 @@ public class Trainer {
     @Column
     private boolean isActive = true;
 
+    @Column
+    private String password;
+
     @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 

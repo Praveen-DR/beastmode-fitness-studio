@@ -1,6 +1,6 @@
 package com.beastmode.mappers;
 
-import com.beastmode.Role;
+import com.beastmode.models.Role;
 import com.beastmode.models.User;
 import org.springframework.stereotype.Service;
 

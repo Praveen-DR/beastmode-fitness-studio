@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TrainerMapper {
-    public Trainer toTrainer(String trainerId, String firstName, String lastName, String email, String phoneNumber, String specialization, int experience, boolean isActive) {
+    public Trainer toTrainer(String trainerId, String firstName, String lastName, String email, String phoneNumber, String specialization, int experience, boolean isActive, String password) {
         return Trainer.builder()
                 .trainerId(trainerId)
                 .firstName(firstName)
@@ -15,6 +15,7 @@ public class TrainerMapper {
                 .specialization(specialization)
                 .experience(experience)
                 .isActive(isActive)
+                .password(password)
                 .build();
     }
 }
