@@ -43,4 +43,9 @@ public class MembershipController {
     ResponseEntity<Membership> getMembershipById(@RequestParam("MembershipId") String membershipId){
         return ResponseEntity.status(200).body(membershipService.getMembershipById(membershipId));
     }
+
+    @GetMapping("v1/getMembershipByUserId")
+    ResponseEntity<Membership> getMembershipByUserId(@RequestParam("UserId") String userId){
+        return ResponseEntity.status(200).body(membershipService.getMembershipByUserId(userId));
+    }
 }

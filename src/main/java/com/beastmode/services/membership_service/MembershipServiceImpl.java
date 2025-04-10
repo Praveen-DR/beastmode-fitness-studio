@@ -66,5 +66,10 @@ public class MembershipServiceImpl implements MembershipService{
         return membershipRepository.findById(membershipId).orElseThrow(()-> new ApiRequestException("Membership ID does not exists"));
     }
 
+    @Override
+    public Membership getMembershipByUserId(String userId) {
+        return membershipRepository.findByUser_UserId(userId).orElseThrow(()-> new ApiRequestException("Membership is not available for this user"));
+    }
+
 
 }

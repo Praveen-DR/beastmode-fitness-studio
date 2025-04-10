@@ -1,6 +1,7 @@
 package com.beastmode.services.membership_service;
 
 import com.beastmode.models.Membership;
+import com.beastmode.models.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,5 +18,7 @@ public interface MembershipService {
     List<Membership> getAllMembership();
 
     Membership getMembershipById(String membershipId);
+
+    Membership getMembershipByUserId(String userId);
 
 }
