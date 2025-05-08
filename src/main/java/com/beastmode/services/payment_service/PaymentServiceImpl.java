@@ -8,7 +8,6 @@ import com.beastmode.services.membership_service.MembershipService;
 import com.beastmode.services.user_service.UserService;
 import com.beastmode.utils.UUIDUtil;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 

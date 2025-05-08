@@ -30,7 +30,7 @@ public class TrainerController {
         String message = trainerService.updateTrainer(data.trainerId(), data.firstName(), data.lastName(), data.email(), data.phoneNumber(), data.specialization(), data.experience(), data.isActive(), data.password());
         return ResponseEntity.status(201).body(message);
     }
-
+    
     @GetMapping("/v1/getAllTrainer")
     ResponseEntity<List<Trainer>> getAllTrainer(){
         return ResponseEntity.status(200).body(trainerService.getAllTrainer());

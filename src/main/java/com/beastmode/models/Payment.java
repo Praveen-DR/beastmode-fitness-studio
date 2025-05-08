@@ -20,16 +20,6 @@ public class Payment {
     @Id
     private String paymentId; // Primary Key
 
-    @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "membership_id", nullable = false)
-    private Membership membership;
-
     @Column(nullable = false)
     private Double amount;
 
@@ -44,6 +34,16 @@ public class Payment {
 
     @Column(unique = true)
     private String transactionId;
+
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "membership_id", nullable = false)
+    private Membership membership;
 
 }
 
