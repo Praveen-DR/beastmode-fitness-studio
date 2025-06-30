@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Builder
 public class Attendance {
     @Id
-    private String attendanceId; // Primary Key
+    private String attendanceId;
 
     @Column(nullable = false)
     private LocalDateTime checkInTime;
