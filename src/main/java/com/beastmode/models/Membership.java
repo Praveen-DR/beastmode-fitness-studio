@@ -32,10 +32,9 @@ public class Membership {
     @Column(nullable = false)
     private boolean isActive;
 
-    @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "user_id")
-    private User user;
+    @OneToMany(mappedBy = "membership")
+    @JsonManagedReference
+    private List<User> users;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "membership", cascade = CascadeType.ALL)
@@ -44,3 +43,4 @@ public class Membership {
 
 
 }
+

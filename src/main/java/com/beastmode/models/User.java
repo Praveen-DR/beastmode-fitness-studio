@@ -43,9 +43,10 @@ public class User {
     @JsonManagedReference
     private List<Payment> payments;
 
-    @OneToMany(mappedBy = "user")
-    @JsonManagedReference
-    private List<Membership> memberships;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "membership_id")
+    private Membership memberships;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.DETACH)
     @JsonManagedReference
