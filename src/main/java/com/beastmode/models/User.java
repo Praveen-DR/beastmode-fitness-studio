@@ -1,6 +1,6 @@
 package com.beastmode.models;
 
-import com.beastmode.models.Role;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -9,7 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+
 import java.util.List;
 
 @Entity
