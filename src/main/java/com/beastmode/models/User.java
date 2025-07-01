@@ -34,6 +34,9 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
+    @Column(nullable = false)
+    private String phoneNo;
+
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "trainer_id")

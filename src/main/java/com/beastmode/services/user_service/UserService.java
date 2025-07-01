@@ -1,5 +1,6 @@
 package com.beastmode.services.user_service;
 
+import com.beastmode.models.Membership;
 import com.beastmode.models.Role;
 import com.beastmode.models.User;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Service
 public interface UserService {
-    String createUser(String email, String name, String password, Role role);
+    String createUser(String email, String name, String password, Role role, String phoneNo, String memberShipId);
 
     User login(String email, String password);
 

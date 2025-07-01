@@ -1,10 +1,12 @@
 package com.beastmode.services.user_service;
 
+import com.beastmode.models.Membership;
 import com.beastmode.models.Role;
 import com.beastmode.exceptions.ApiRequestException;
 import com.beastmode.mappers.UserMapper;
 import com.beastmode.models.User;
 import com.beastmode.repositories.UserRepository;
+import com.beastmode.services.membership_service.MembershipService;
 import com.beastmode.utils.UUIDUtil;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Service;
@@ -15,24 +17,26 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final MembershipService membershipService;
     private final UUIDUtil uuidUtil;
 
-    UserServiceImpl(UserRepository userRepository, UserMapper userMapper, UUIDUtil uuidUtil){
+    UserServiceImpl(UserRepository userRepository, UserMapper userMapper, MembershipService membershipService, UUIDUtil uuidUtil){
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.membershipService = membershipService;
         this.uuidUtil = uuidUtil;
     }
 
 
     @Override
-    public String createUser(String email, String name, String password, Role role) {
+    public String createUser(String email, String name, String password, Role role, String phoneNo, String membershipId) {
         try {
-
 
             if (userRepository.existsByEmail(email)) {
                 throw new ApiRequestException("emailId already exists");
             }
-            User user = userMapper.toUser(uuidUtil.generateUuid(), email, name, password, role);
+            Membership membership = membershipService.getMembershipById(membershipId);
+            User user = userMapper.toUser(uuidUtil.generateUuid(), email, name, password, role, phoneNo, membership);
             userRepository.save(user);
             return "User Created successfully";
         }catch (HttpMessageNotReadableException e) {

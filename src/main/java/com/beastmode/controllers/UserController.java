@@ -24,7 +24,7 @@ public class UserController {
 
     @PostMapping("/v1/Create")
     public ResponseEntity<RegisterResponseDto> createUser(@RequestBody CreateUserDto data){
-        String message =  userService.createUser(data.email(), data.name(), data.password(), data.role());
+        String message =  userService.createUser(data.email(), data.name(), data.password(), data.role(), data.phoneNo(), data.membershipId());
         return ResponseEntity.status(201).body(new RegisterResponseDto(message));
     }
 
