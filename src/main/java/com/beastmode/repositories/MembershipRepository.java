@@ -12,7 +12,7 @@ public interface MembershipRepository extends JpaRepository<Membership, String> 
 
     List<Membership> findAllByMembershipIdAndIsActive(String membershipId, boolean isActive);
 
-    Optional<Membership> findByUser_UserId(String userId);
+    Optional<Membership> findByUsers_UserId(String userId);
 
 
 }

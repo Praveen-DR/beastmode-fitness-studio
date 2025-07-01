@@ -45,7 +45,7 @@ public class User {
 
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "membership_id")
+    @JoinColumn(name = "membership")
     private Membership memberships;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.DETACH)

@@ -32,7 +32,7 @@ public class Membership {
     @Column(nullable = false)
     private boolean isActive;
 
-    @OneToMany(mappedBy = "membership")
+    @OneToMany(mappedBy = "memberships")
     @JsonManagedReference
     private List<User> users;
 
